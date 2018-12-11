@@ -1,0 +1,217 @@
+function varargout = FinalProject(varargin)
+% FINALPROJECT MATLAB code for FinalProject.fig
+%      FINALPROJECT, by itself, creates a new FINALPROJECT or raises the existing
+%      singleton*.
+%
+%      H = FINALPROJECT returns the handle to a new FINALPROJECT or the handle to
+%      the existing singleton*.
+%
+%      FINALPROJECT('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in FINALPROJECT.M with the given input arguments.
+%
+%      FINALPROJECT('Property','Value',...) creates a new FINALPROJECT or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before FinalProject_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to FinalProject_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help FinalProject
+
+% Last Modified by GUIDE v2.5 10-Dec-2018 19:30:25
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @FinalProject_OpeningFcn, ...
+                   'gui_OutputFcn',  @FinalProject_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before FinalProject is made visible.
+function FinalProject_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to FinalProject (see VARARGIN)
+
+% Choose default command line output for FinalProject
+handles.output = hObject;
+
+handles.counter = 0;
+% Update handles structure
+guidata(hObject, handles);
+
+
+
+% UIWAIT makes FinalProject wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = FinalProject_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+% --- Executes on button press in pushbuttonA1.
+function pushbuttonA1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbuttonA1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+hObject.String=':(  INCORRECT';
+hObject.BackgroundColor='Red';
+
+
+% --- Executes on button press in pushbuttonA2.
+function pushbuttonA2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbuttonA2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+hObject.String=':) CORRECT';
+hObject.BackgroundColor='Green';
+
+
+% --- Executes on button press in pushbuttonA4.
+function pushbuttonA4_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbuttonA4 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+hObject.String=':(  INCORRECT';
+hObject.BackgroundColor='Red';
+
+
+% --- Executes on button press in pushbuttonA3.
+function pushbuttonA3_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbuttonA3 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+hObject.String=':( INCORRECT';
+hObject.BackgroundColor='Red';
+
+
+% --- Executes on button press in Lifeline5050.
+function Lifeline5050_Callback(hObject, eventdata, handles)
+% hObject    handle to Lifeline5050 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.Lifeline5050,'visible','off');
+set(handles.pushbuttonA3,'visible','off');
+set(handles.pushbuttonA1,'visible','off');
+
+% --- Executes on button press in lifelineaskthecrowd.
+function lifelineaskthecrowd_Callback(hObject, eventdata, handles)
+% hObject    handle to lifelineaskthecrowd (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+figure('Name','Poll Data','NumberTitle','off');
+x= categorical({'A1','A2','A3','A4'});
+y= [12.8 73 5.2 9];
+plot1=bar(x,y);
+display(plot1);
+set(handles.lifelineaskthecrowd,'visible','off')
+
+
+% --- Executes on button press in lifelinephoneafriend.
+function lifelinephoneafriend_Callback(hObject, eventdata, handles)
+% hObject    handle to lifelinephoneafriend (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.lifelinephoneafriend,'visible','off')
+
+
+% --- Executes on button press in NextQ.
+function NextQ_Callback(hObject, eventdata, handles)
+% hObject    handle to NextQ (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+guidata(hObject, handles);
+handles.counter = handles.counter + 1
+set(handles.pushbuttonA2,'BackgroundColor','White');
+guidata(hObject, handles);
+
+
+for i= handles.counter
+if i==1
+set(handles.pushbuttonA1,'string','Answer 1');
+set(handles.pushbuttonA2,'string','Answer 1');
+set(handles.pushbuttonA3,'string','Answer 1');
+set(handles.pushbuttonA4,'string','Answer 1');
+% insert locations
+elseif i==2
+set(handles.pushbuttonA1,'string','Answer 2');
+set(handles.pushbuttonA2,'string','Answer 2');
+set(handles.pushbuttonA3,'string','Answer 2');
+set(handles.pushbuttonA4,'string','Answer 2');
+% insert locations
+elseif i==3
+set(handles.pushbuttonA1,'string','Answer 3');
+set(handles.pushbuttonA2,'string','Answer 3');
+set(handles.pushbuttonA3,'string','Answer 3');
+set(handles.pushbuttonA4,'string','Answer 3');
+% insert locations
+elseif i==4
+set(handles.pushbuttonA1,'string','Answer 4');
+set(handles.pushbuttonA2,'string','Answer 4');
+set(handles.pushbuttonA3,'string','Answer 4');
+set(handles.pushbuttonA4,'string','Answer 4');
+% insert locations
+elseif i==5
+set(handles.pushbuttonA1,'string','Answer 5');
+set(handles.pushbuttonA2,'string','Answer 5');
+set(handles.pushbuttonA3,'string','Answer 5');
+set(handles.pushbuttonA4,'string','Answer 5');
+% insert locations
+elseif i==6
+set(handles.pushbuttonA1,'string','Answer 6');
+set(handles.pushbuttonA2,'string','Answer 6');
+set(handles.pushbuttonA3,'string','Answer 6');
+set(handles.pushbuttonA4,'string','Answer 6');
+% insert locations
+elseif i==7
+set(handles.pushbuttonA1,'string','Answer 7');
+set(handles.pushbuttonA2,'string','Answer 7');
+set(handles.pushbuttonA3,'string','Answer 7');
+set(handles.pushbuttonA4,'string','Answer 7');
+% insert locations
+elseif i==8
+set(handles.pushbuttonA1,'string','Answer 8');
+set(handles.pushbuttonA2,'string','Answer 8');
+set(handles.pushbuttonA3,'string','Answer 8');
+set(handles.pushbuttonA4,'string','Answer 8');
+% insert locations
+elseif i==9
+set(handles.pushbuttonA1,'string','Answer 9');
+set(handles.pushbuttonA2,'string','Answer 9');
+set(handles.pushbuttonA3,'string','Answer 9');
+set(handles.pushbuttonA4,'string','Answer 9');
+% insert locations
+elseif i==10
+set(handles.pushbuttonA1,'string','Answer 10');
+set(handles.pushbuttonA2,'string','Answer 10');
+set(handles.pushbuttonA3,'string','Answer 10');
+set(handles.pushbuttonA4,'string','Answer 10');
+end
+end
